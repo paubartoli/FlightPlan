@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: FlightPlan
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    FlightPlan:
+      properties:
+        name:
+          type: string
+          title: Name
+          default: ""
+          x_frontend_fieldName: Name
+          x_frontend_fieldDescription: This is the Name of the FlightPlan
+          x_frontend_editable: true
+          x_frontend_placeholder: Write the Name of this FlightPlan
+        date:
+          type: string
+          format: date-time
+          title: Date
+          x_frontend_fieldName: Flight Date
+          x_frontend_fieldDescription: Departure Datetime of the FlightPlan
+          x_frontend_editable: true
+          x_frontend_placeholder: Select a Datetime
+        drone_reference:
+          type: string
+          title: Drone Reference
+          x_frontend_fieldName: Drone Reference
+          x_frontend_fieldDescription: This is the Drone Reference
+          x_frontend_editable: true
+          x_frontend_placeholder: Add the Drone Reference
+        mission_details:
+          type: string
+          title: MissionDetails
+          default: ""
+          x_frontend_fieldName: Mission Details
+          x_frontend_fieldDescription: These are the important details for the mission
+          x_frontend_editable: true
+          x_frontend_placeholder: Write the mission details here
+        route:
+          $ref: "#/components/schemas/LineString"
+          title: Route
+          x_frontend_fieldName: Route
+          x_frontend_fieldDescription: This is Route of the FlightPlan
+          x_frontend_editable: true
+          x_frontend_placeholder: Add the coordinates for the Route
+          x_frontend_uspaceMap: true
+      required:
+        - name
+        - drone_reference
+      x-frontend-defaultFields:
+        - name
+        - date
+        - drone_reference
+        - mission_details
+        - route
